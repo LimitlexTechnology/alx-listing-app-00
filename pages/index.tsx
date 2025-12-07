@@ -15,10 +15,10 @@ export default function Home() {
     if (title === "All") {
       setSelectedFilters(["All"]);
     } else {
-      setSelectedFilters((prev) => {
+      setSelectedFilters((prev: string[]) => {
         const newFilters = prev.includes(title)
-          ? prev.filter((f) => f !== title)
-          : [...prev.filter((f) => f !== "All"), title];
+          ? prev.filter((f: string) => f !== title)
+          : [...prev.filter((f: string) => f !== "All"), title];
 
         return newFilters.length === 0 ? ["All"] : newFilters;
       });
@@ -39,7 +39,7 @@ export default function Home() {
     };
 
     return properties.filter((p) =>
-      selectedFilters.every((f) => hasFilter(p, f))
+      selectedFilters.every((f: string) => hasFilter(p, f))
     );
   }, [properties, selectedFilters]);
   return (
